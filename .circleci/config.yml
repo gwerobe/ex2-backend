@@ -9,11 +9,9 @@ jobs:
       - image: cimg/node:17.4.0
     steps:
       - run : git clone https://github.com/gwerobe/ex2-backend.git
-      - run : ls -al
-      - run : cd ex2-backend/ && ls -al
-      # - node/install
-      # - run : npm install
-      # - run : npm run test
+      - node/install
+      - run : cd ex2-backend/ && npm install
+      - run : cd ex2-backend/ && npm run test
 
 workflows:
   build:
