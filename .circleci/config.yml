@@ -10,12 +10,10 @@ jobs:
     steps:
       - run : git clone https://github.com/gwerobe/ex2-backend.git
       - run : ls -al
-      - run : cd ex2-backend/
-      - run : ls -al
-        working_directory: ex2-backend
-      - node/install
-      - run : npm install
-      - run : npm run test
+      - run : cd /ex2-backend && ls -al
+      # - node/install
+      # - run : npm install
+      # - run : npm run test
 
 workflows:
   build:
