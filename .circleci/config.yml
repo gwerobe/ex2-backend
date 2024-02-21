@@ -12,8 +12,26 @@ jobs:
       - node/install
       - run : cd ex2-backend/ && npm install
       - run : cd ex2-backend/ && npm run test
+  integrationFrontend:
+    docker:
+      - image: cimg/node:17.4.0
+    steps:
+      - run : git clone https://github.com/gwerobe/ex2-backend.git
+      - run : git clone https://github.com/gwerobe/ex2-frontend.git
+      - node/install
+      - run : cd ex2-frontend/ && npm install
+      - run : cd ex2-frontend/ && npm run build
+      - run : cd ex2-backend/ && mkdir public
+      - run : cp ex2-frontend/build ex2-frontend/public
+      - persist_to_workspace:
+          root : ex2-backend
+          pathhs:
+            - .
 
 workflows:
   build:
     jobs:
       - checkoutEtTests
+      - integrationFrontend : 
+          requires :
+            - checkoutEtTests
