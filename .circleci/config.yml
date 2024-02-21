@@ -27,7 +27,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - Exercice2
+            - ex2-backend
 
 workflows:
   build:
