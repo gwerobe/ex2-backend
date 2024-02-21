@@ -23,10 +23,10 @@ jobs:
       - run : cd ex2-frontend/ && npm run build
       - run : cd ex2-backend/ && mkdir public
       - run : cp -r ex2-frontend/build ex2-frontend/public
-      # - persist_to_workspace:
-      #     root : ex2-backend
-      #     pathhs:
-      #       - .
+      - persist_to_workspace:
+          root: .
+          paths:
+            - tp2-backend
 
 workflows:
   build:
