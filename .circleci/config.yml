@@ -23,6 +23,7 @@ jobs:
       - run : cd ex2-frontend/ && npm run build
       - run : cd ex2-backend/ && mkdir public
       - run : cp -r ex2-frontend/build ex2-frontend/public
+      - run : cd /home/circleci/project && ls -al
       - persist_to_workspace:
           root: .
           paths:
