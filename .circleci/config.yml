@@ -28,6 +28,13 @@ jobs:
           root: .
           paths:
             - ex2-backend
+  deploiement:
+    docker:
+      - image: cimg/node:17.4.0
+    steps:
+      - attach_workspace:
+          at: .
+      - run : cd ex2-backend && ls -Rl
 
 workflows:
   build:
@@ -36,3 +43,6 @@ workflows:
       - integrationFrontend : 
           requires :
             - checkoutEtTests
+      - deploiement :
+          requires : 
+            - integrationFrontend
